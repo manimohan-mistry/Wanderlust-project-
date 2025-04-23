@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+.userSearch{
+    color: rgb(248, 163, 4);
+}
+
+.userSearch-heading{
+    color: rgb(220, 94, 48);
+}
+</style>
+
+    <h4 class="userSearch-heading"><i>Your prefered location listing in <span class="userSearch" ><%= userSearch %></span> are:</i> </h4>
+
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mt-3">
+        <% for(let listing of listings) { %>
+            <a href="/listings/<%= listing._id %>" class="listing-links">
+                <div class="card col listing-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listings-image"
+                        style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= listing.title %>
+                            </b> <br>
+                            ₹ <%= Number(listing.price).toLocaleString('en-IN') %> &nbsp; &nbsp; <i class="tax-info">18%
+                                    GST</i>
+                        </p>
+
+                    </div>
+                </div>
+
+            </a>
+            <% } %>
+    </div>
